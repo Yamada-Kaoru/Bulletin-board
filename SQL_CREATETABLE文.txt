@@ -1,0 +1,59 @@
+
+//ユーザーテーブルCREATE文
+CREATE  TABLE `Bulletin-Board`.`users`
+ (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `account` VARCHAR(20) NOT NULL ,
+  `name` VARCHAR(10) NULL ,
+  `branch_id` INT NULL ,
+  `post_id` INT NULL ,
+  `password` VARCHAR(255) NOT NULL ,
+  `inaert_date` TIMESTAMP NOT NULL ,
+  `update_date` TIMESTAMP NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `account_UNIQUE` (`account` ASC)
+ );
+  
+//記事テーブルCREATE文
+CREATE  TABLE `Bulletin-Board`.`articles`
+ (
+  `id` INT NULL AUTO_INCREMENT ,
+  `user_id` INT NOT NULL ,
+  `title` VARCHAR(50) NOT NULL ,
+  `text` VARCHAR(1000) NOT NULL ,
+  `category` VARCHAR(10) NOT NULL ,
+  `insert_date` TIMESTAMP NOT NULL ,
+  `update_date` TIMESTAMP NOT NULL ,
+  PRIMARY KEY (`id`) 
+ );
+  
+//コメントテーブルCREATE文
+CREATE  TABLE `Bulletin-Board`.`comments`
+ (
+  `id` INT NULL AUTO_INCREMENT ,
+  `article_id` INT NOT NULL ,
+  `user_id` INT NOT NULL ,
+  `text` VARCHAR(50) NOT NULL ,
+  `insert_date` TIMESTAMP NOT NULL ,
+  `update_date` TIMESTAMP NOT NULL ,
+  PRIMARY KEY (`id`) 
+ );
+  
+//支店テーブルCREATE文
+CREATE  TABLE `Bulletin-Board`.`branches`
+ (
+  `id` INT NOT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(255) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `branch_name_UNIQUE` (`branch_name` ASC)
+ );
+
+//部署・役職テーブルCREATE文
+CREATE  TABLE `Bulletin-Board`.`possitions`
+ (
+  `id` INT NULL AUTO_INCREMENT ,
+  `name` VARCHAR(255) NOT NULL ,
+  PRIMARY KEY (`id`) ,
+  UNIQUE INDEX `post_name_UNIQUE` (`post_name` ASC)
+ );
+  
